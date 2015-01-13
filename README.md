@@ -18,3 +18,13 @@ https://github.com/shinjino/TwitterReport/raw/master/target/TwitterReport-0.1-ja
 ```sh
 java -jar TwitterReport-0.1-jar-with-dependencies.jar
 ```
+
+## Usage
+
+The source format is one username or twitter link by line
+
+<pre>
+Tomson
+Tom
+https://twitter.com/Shinjino
+</pre>
