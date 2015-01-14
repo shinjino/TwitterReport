@@ -1,8 +1,7 @@
 package fr.shinjino.twitterreport.view.item;
 
 import javax.swing.table.DefaultTableModel;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author Shinjino <shinjino@outlook.fr>
@@ -49,11 +48,23 @@ public class UserListTableModel extends DefaultTableModel {
 
             if (rowId < this.getRowCount()) {
                 this.setValueAt(status, rowId, 2);
+                this.datas.put(username, status);
             }
         }
     }
 
     public Collection<String> getUsers() {
         return this.datas.keySet();
+    }
+
+    public Collection<String> getNewUsers() {
+        List<String> usernames = new ArrayList<String>();
+
+        for (Map.Entry<String, String> entity : this.datas.entrySet()) {
+            if (entity.getValue().contentEquals("NEW"))
+                usernames.add(entity.getKey());
+        }
+
+        return usernames;
     }
 }

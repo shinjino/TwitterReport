@@ -57,7 +57,7 @@
           <component id="b1200" class="javax.swing.JTextField" binding="textFieldUriList">
             <constraints/>
             <properties>
-              <text value="http://localhost/twitter.txt"/>
+              <text value="http://hastebin.com/raw/adademuvef"/>
             </properties>
           </component>
           <component id="adb95" class="javax.swing.JButton" binding="updateButton" default-binding="true">

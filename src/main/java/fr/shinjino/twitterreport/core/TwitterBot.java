@@ -35,8 +35,8 @@ public class TwitterBot implements Runnable {
         }
 
         GlobalModel.mainWindow.getStartButton().setEnabled(true);
+        GlobalModel.mainWindow.getUpdateButton().setEnabled(true);
         GlobalModel.mainWindow.getStopButton().setEnabled(false);
-        GlobalModel.mainWindow.getUpdateButton().setEnabled(false);
     }
 
     public void stop() {
@@ -44,15 +44,15 @@ public class TwitterBot implements Runnable {
     }
 
     private void loadUsers() {
-        Collection<String> usernames = GlobalModel.users.getUsers();
+        Collection<String> usernames = GlobalModel.users.getNewUsers();
         for (String username : usernames) {
             this.users.add(username);
         }
     }
 
     public void reportUser(String screenName) {
+        System.out.println("[REPORT] " + screenName);
         if (this.twitterApi.reportUser(screenName)) {
-            System.out.println("[REPORT] " + screenName);
             GlobalModel.users.setStatus(screenName, "DONE");
         }
     }

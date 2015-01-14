@@ -16,6 +16,6 @@ public class StopButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-
+        GlobalModel.twitterBot.stop();
     }
 }
