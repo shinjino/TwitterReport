@@ -22,6 +22,13 @@ public class MainWindow extends JFrame {
     private JButton settingsButton;
     private JProgressBar progressBar;
 
+    private WindowMode mode = WindowMode.DEFAULT;
+
+    public enum WindowMode {
+        DEFAULT,
+        RUNNING
+    }
+
     public MainWindow() {
         super();
         setContentPane(rootPanel);
@@ -45,21 +52,35 @@ public class MainWindow extends JFrame {
 
     }
 
-    public JTextField getTextFieldUriList()
-    {
+    public void toogleMode(WindowMode mode) {
+        switch (mode) {
+            case DEFAULT:
+                this.startButton.setEnabled(true);
+                this.updateButton.setEnabled(true);
+                this.stopButton.setEnabled(false);
+                break;
+            case RUNNING:
+                this.startButton.setEnabled(false);
+                this.updateButton.setEnabled(false);
+                this.stopButton.setEnabled(true);
+                break;
+        }
+        this.mode = mode;
+    }
+
+    public JTextField getTextFieldUriList() {
         return textFieldUriList;
     }
 
-    public JButton getStartButton()
-    {
+    public JButton getStartButton() {
         return this.startButton;
     }
-    public JButton getStopButton()
-    {
+
+    public JButton getStopButton() {
         return this.stopButton;
     }
-    public JButton getUpdateButton()
-    {
+
+    public JButton getUpdateButton() {
         return this.updateButton;
     }
 }

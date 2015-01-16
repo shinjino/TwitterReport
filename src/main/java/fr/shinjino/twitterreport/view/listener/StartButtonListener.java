@@ -22,8 +22,8 @@ public class StartButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        mainWindow.getStartButton().setEnabled(false);
-        mainWindow.getUpdateButton().setEnabled(false);
+        mainWindow.toogleMode(MainWindow.WindowMode.RUNNING);
+
 
         if (GlobalModel.Account.login.length() > 0
                 && GlobalModel.Account.password.length() > 0) {
@@ -32,17 +32,14 @@ public class StartButtonListener implements ActionListener {
                 GlobalModel.twitterBot = new TwitterBot(GlobalModel.twitterApi);
                 GlobalModel.thread = new Thread(GlobalModel.twitterBot);
                 GlobalModel.thread.start();
-                mainWindow.getStopButton().setEnabled(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this.mainWindow, e.getMessage());
-                mainWindow.getStartButton().setEnabled(true);
-                mainWindow.getUpdateButton().setEnabled(false);
+                mainWindow.toogleMode(MainWindow.WindowMode.DEFAULT);
             }
 
         } else {
             JOptionPane.showMessageDialog(this.mainWindow, "You must define your twitter's credentials.\n Click on the Settings button.");
-            mainWindow.getStartButton().setEnabled(true);
-            mainWindow.getUpdateButton().setEnabled(false);
+            mainWindow.toogleMode(MainWindow.WindowMode.DEFAULT);
         }
     }
 }

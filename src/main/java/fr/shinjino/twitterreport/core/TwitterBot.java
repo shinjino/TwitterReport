@@ -1,6 +1,7 @@
 package fr.shinjino.twitterreport.core;
 
 import fr.shinjino.twitterreport.GlobalModel;
+import fr.shinjino.twitterreport.view.MainWindow;
 
 import java.util.Collection;
 import java.util.Stack;
@@ -34,9 +35,8 @@ public class TwitterBot implements Runnable {
             GlobalModel.progressBar.setValue(++progression);
         }
 
-        GlobalModel.mainWindow.getStartButton().setEnabled(true);
-        GlobalModel.mainWindow.getUpdateButton().setEnabled(true);
-        GlobalModel.mainWindow.getStopButton().setEnabled(false);
+        GlobalModel.mainWindow.toogleMode(MainWindow.WindowMode.DEFAULT);
+
     }
 
     public void stop() {
